@@ -978,8 +978,7 @@ uint8_t check_stateless(void *pack, uint8_t protocol)
 	else if (protocol == 6)
 	{
 		tcp *spec = (tcp *) pack;
-		tree 	  = ip_rules;
-		ret 	  = blocked(tree, spec->header->destin, 32, IN) || blocked(tree, spec->header->source, 32, OUT);
+		ret 	  = blocked(tree, spec->header->destin, 16, IN) || blocked(tree, spec->header->source, 16, OUT);
 
 	}
 	else if (protocol == 17)
