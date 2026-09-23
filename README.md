@@ -59,7 +59,40 @@ sudo ./rule ADD WORD Hello OUT
 
 Existem alguns programas para testes, mas nada de surpreendente.
 
+Exemplos de pacotes Negados:
 
+Rode na seguinte sequência.
+```bash
+make
+sudo ./fire
+
+(Em outro terminal)
+sudo ./rule add port 8081 both
+sudo ./send
+
+nc 10.0.0.1 8081
+
+sudo ./rule add ip 10.0.0.1/24 both
+ping 10.0.0.1
+```
+Todos os casos acima devem ser rejeitados.
+
+Exemplos de pacotes Aceitos:
+
+Rode na sequência.
+```bash
+make 
+sudo ./fire
+
+sudo ./rule add port 8081 out
+sudo ./send
+
+nc 10.0.0.1 8081
+
+sudo ./rule add ip 10.0.0.1/24 out
+```
+
+Todos os casos acima devem ser aprovados.
 #### Fontes
 
 https://www.youtube.com/watch?v=5PPfy-nUWIM
